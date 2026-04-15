@@ -134,26 +134,6 @@ public class ShooterImpl extends Shooter {
     public void periodic() {
         super.periodic();
 
-        shooterConfig.updateGainsConfig(
-                shooterLeader,
-                0,
-                Gains.Superstructure.Shooter.kP,
-                Gains.Superstructure.Shooter.kI,
-                Gains.Superstructure.Shooter.kD,
-                Gains.Superstructure.Shooter.kS,
-                Gains.Superstructure.Shooter.kV,
-                Gains.Superstructure.Shooter.kA);
-
-        shooterConfig.updateGainsConfig(
-                shooterFollower,
-                0,
-                Gains.Superstructure.Shooter.kP,
-                Gains.Superstructure.Shooter.kI,
-                Gains.Superstructure.Shooter.kD,
-                Gains.Superstructure.Shooter.kS,
-                Gains.Superstructure.Shooter.kV,
-                Gains.Superstructure.Shooter.kA);
-
         if (EnabledSubsystems.SHOOTER.get() || getState() == ShooterState.STOP) {
             if (voltageOverride.isPresent()) {
                 shooterLeader.setVoltage(voltageOverride.get());

@@ -64,6 +64,7 @@ import com.stuypulse.robot.subsystems.spindexer.Spindexer.SpindexerState;
 import com.stuypulse.robot.subsystems.superstructure.Superstructure;
 import com.stuypulse.robot.subsystems.superstructure.Superstructure.SuperstructureState;
 import com.stuypulse.robot.subsystems.superstructure.hood.Hood;
+import com.stuypulse.robot.subsystems.superstructure.hood.Hood.HoodState;
 import com.stuypulse.robot.subsystems.superstructure.shooter.Shooter;
 import com.stuypulse.robot.subsystems.superstructure.turret.Turret;
 import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
@@ -150,35 +151,36 @@ public class RobotContainer {
     /***************/
 
     private void configureButtonBindings() {
-        // Scoring Routine (TR)
+        // Scoring Routine (TR) with Hood Front Close Preset
         driver.getTopButton()
             .whileTrue(new LEDApplyPattern(Settings.LED.SHOOT_IN_PLACE))
             .whileTrue(new SwerveXMode())
-.whileTrue(new BuzzController(driver).onlyWhile(() -> !vision.hasData()).repeatedly())
+            .whileTrue(new BuzzController(driver).onlyWhile(() -> !vision.hasData()).repeatedly())
             .whileTrue(
-                new SuperstructureShoot() //TODO: change back to interpolation
-                    //.andThen(new WaitUntilCommand(superstructure::isReadyToShoot))
-                    .andThen(
-                        Commands.parallel(
-                            new RunCommand(
-                                () -> handoff.setState(HandoffState.FORWARD),
-                                handoff),
-                            new RunCommand(
-                                () -> spindexer.setState(SpindexerState.FORWARD),
-                                spindexer)
-                            )
-                                        .repeatedly()
+                new ParallelCommandGroup(
+                    new RunCommand(
+                        () -> Hood.getInstance().setState(HoodState.HUB_DIRECT_FRONT),
+                        Hood.getInstance()),
+                    new SuperstructureShoot()
+                        .andThen(
+                            Commands.parallel(
+                                new RunCommand(
+                                    () -> handoff.setState(HandoffState.FORWARD),
+                                    handoff),
+                                new RunCommand(
+                                    () -> spindexer.setState(SpindexerState.FORWARD),
+                                    spindexer)
+                            ).repeatedly()
                         )
-                    )
-                .onFalse(new SpindexerStop()
-                    .alongWith(new SuperstructureStow())
-                    .alongWith(new HandoffStop()));
-                    
-
+                )
+            )
+            .onFalse(new SpindexerStop()
+                .alongWith(new SuperstructureStow())
+                .alongWith(new HandoffStop()));
         //Intake Stow
-         //driver.getLeftTriggerButton()
-                 //.onTrue(new HomingRoutine());
-           //  .onTrue(new IntakeStow());
+        driver.getLeftTriggerButton()
+                .onTrue(new RunCommand(() -> Hood.getInstance().setState(HoodState.HOMING_LOWER), Hood.getInstance()))
+                .onFalse(new RunCommand(() -> Hood.getInstance().setState(HoodState.IDLE), Hood.getInstance()));
 
         // Intake Deploy
         driver.getRightTriggerButton()

@@ -38,6 +38,11 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 import java.util.Optional;
 
 public class SpindexerImpl extends Spindexer {
+    private static final double JAM_CURRENT_THRESHOLD = 35.0; // amps - current must be sustained
+    private static final double JAM_VELOCITY_THRESHOLD = 500.0; // RPM - motor must be stalled
+    private static final double JAM_DEBOUNCE_TIME = 0.3; // seconds - must detect jam for 300ms before acting
+    private static final double JAM_REVERSE_SPEED = -1500.0; // RPM - gentle reverse, not full reverse
+
     private final Motors.TalonFXConfig spindexerLeadConfig;
     private final Motors.TalonFXConfig spindexerFollowerConfig;
 
@@ -49,6 +54,9 @@ public class SpindexerImpl extends Spindexer {
     private final BStream isStalling;
 
     private Optional<Double> voltageOverride;
+    
+    private double jamDetectionTimer = 0.0;
+    private boolean isAutoReversing = false;
 
     private StatusSignal<Current> leaderSupplyCurrent;
     private StatusSignal<Current> leaderStatorCurrent;
@@ -163,6 +171,35 @@ public class SpindexerImpl extends Spindexer {
     public void periodic() {
         super.periodic();
 
+        double leaderMotorCurrent = leaderSupplyCurrent.getValueAsDouble();
+        double leaderMotorRPM = getCurrentLeaderMotorRPM();
+        
+        // Detect jam: high current AND low velocity = stalled motor
+        boolean jamConditionMet = leaderMotorCurrent > JAM_CURRENT_THRESHOLD && 
+                                  Math.abs(leaderMotorRPM) < JAM_VELOCITY_THRESHOLD &&
+                                  getState() == SpindexerState.FORWARD &&
+                                  !isAutoReversing;
+        
+        if (jamConditionMet) {
+            jamDetectionTimer += 0.02; // ~50Hz loop rate
+            
+            // Only trigger auto-reverse after sustained jam detection
+            if (jamDetectionTimer >= JAM_DEBOUNCE_TIME) {
+                isAutoReversing = true;
+                SmartDashboard.putBoolean("Spindexer/Jam Detected", true);
+            }
+        } else {
+            // Reset timer if jam condition is no longer met
+            jamDetectionTimer = 0.0;
+            
+            // Exit auto-reverse after a brief reversal
+            if (isAutoReversing) {
+                isAutoReversing = false;
+                jamDetectionTimer = 0.0;
+                SmartDashboard.putBoolean("Spindexer/Jam Detected", false);
+            }
+        }
+
         boolean shouldNotShootIntoHub = (Superstructure.getInstance().superstructureInShootIntoHubMode()) ? 
             !CommandSwerveDrivetrain.getInstance().canShootIntoHub() 
             : false;
@@ -174,7 +211,9 @@ public class SpindexerImpl extends Spindexer {
                 if (shouldStop() /* || shouldNotShootIntoHub */) {
                     leaderMotor.stopMotor();
                 } else {
-                    leaderMotor.setControl(controller.withVelocity(getTargetRPM() / Settings.SECONDS_IN_A_MINUTE));
+                    // Use gentle reverse speed instead of full reverse
+                    double targetRPM = isAutoReversing ? JAM_REVERSE_SPEED : getTargetRPM();
+                    leaderMotor.setControl(controller.withVelocity(targetRPM / Settings.SECONDS_IN_A_MINUTE));
                 }
             }
         } else {

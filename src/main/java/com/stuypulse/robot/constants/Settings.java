@@ -87,7 +87,7 @@ public interface Settings {
     }
 
     public interface Spindexer {
-        double FORWARD_SPEED = 4000.0;
+        double FORWARD_SPEED = 4800.0;
         double REVERSE_SPEED = -1000.0;
         double STOP_SPEED = 0.0;
 
@@ -204,7 +204,7 @@ public interface Settings {
 
             public final Rotation2d ENCODER_OFFSET = Rotation2d.fromRotations(0.795);
 
-            public final Rotation2d FORWARD_SOFT_LIMIT = Rotation2d.fromDegrees(40.0);
+            public final Rotation2d FORWARD_SOFT_LIMIT = Rotation2d.fromDegrees(50.0);
             public final Rotation2d REVERSE_SOFT_LIMIT = Rotation2d.fromDegrees(20.0);
             public final Rotation2d MIN_FROM_HORIZON = Rotation2d.fromDegrees(7.0);
             public final Rotation2d MAX_FROM_HORIZON = Rotation2d.fromDegrees(40.0);
@@ -224,6 +224,7 @@ public interface Settings {
 
                 public final Rotation2d STOW = Rotation2d.fromDegrees(21.0);
                 public final Rotation2d KB = Rotation2d.fromDegrees(25.0);
+                public final Rotation2d HUB_DIRECT_FRONT = Rotation2d.fromDegrees(42.5);
                 public final Rotation2d LEFT_CORNER = Rotation2d.fromDegrees(38.0);
                 public final Rotation2d RIGHT_CORNER = Rotation2d.fromDegrees(38.0);
             }

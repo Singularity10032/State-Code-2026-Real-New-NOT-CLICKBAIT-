@@ -14,19 +14,19 @@ public class Gains {
     public interface Superstructure {
         public interface Shooter {
             // VTC PID
-            SmartNumber kP = new SmartNumber("Superstructure/Shooter/Gains/kP",14);
-            SmartNumber kI = new SmartNumber("Superstructure/Shooter/Gains/kI", 0.0);
+            SmartNumber kP = new SmartNumber("Superstructure/Shooter/Gains/kP", 18.0);      // Increased from 14 for tighter control
+            SmartNumber kI = new SmartNumber("Superstructure/Shooter/Gains/kI", 0.1);      // Added integral for steady-state accuracy
             SmartNumber kD = new SmartNumber("Superstructure/Shooter/Gains/kD", 0.0);
 
-            SmartNumber kS = new SmartNumber("Superstructure/Shooter/Gains/kS", 2.75);
+            SmartNumber kS = new SmartNumber("Superstructure/Shooter/Gains/kS", 3.0);      // Increased from 2.75 for better startup torque
             SmartNumber kV = new SmartNumber("Superstructure/Shooter/Gains/kV", 0.238);
             SmartNumber kA = new SmartNumber("Superstructure/Shooter/Gains/kA", 0.0);
         }
 
         public interface Hood {
-            double kP = 250.0;
+            double kP = 50.0;
             double kI = 0.0;
-            double kD = 2.0;
+            double kD = 0.0;
 
             double kS = 0.25;
             double kV = 0.0;
@@ -59,12 +59,12 @@ public class Gains {
     }
 
     public interface Spindexer {
-        double kP = 1.2;
-        double kI = 0.0;
+        double kP = 3.5;      // Increased from 2.5 for faster error correction
+        double kI = 0.05;     // Added integral for steady-state accuracy
         double kD = 10.0;
-
-        double kS = 0.25;
-        double kV = 1.2;
+        
+        double kS = 0.65;     // Increased from 0.5 for better startup torque
+        double kV = 1.2;      // Velocity feedforward
         double kA = 0.010876;
     }
 
@@ -83,12 +83,12 @@ public class Gains {
     }
 
     public interface Handoff {
-        double kP = 0.00015508;
-        double kI = 0.0;
-        double kD = 0.0;
-
-        double kS = 0.1728;
-        double kV = 0.12;
+        double kP = 0.75;     // Increased from 0.5 for better load response
+        double kI = 0.08;     // Added integral to eliminate steady-state error
+        double kD = 2.0;
+        
+        double kS = 0.35;     // Increased from 0.25 for stronger static friction override
+        double kV = 0.12;     // Velocity feedforward
         double kA = 0.00284;
     }
 

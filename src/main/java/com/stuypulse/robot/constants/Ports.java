@@ -53,7 +53,7 @@ public interface Ports {
     }
 
     public interface Spindexer {
-        int SPINDEXER_LEAD_MOTOR = 30;
-        int SPINDEXER_FOLLOW_MOTOR = 31;
+        int SPINDEXER_LEAD_MOTOR = 31;
+        int SPINDEXER_FOLLOW_MOTOR = 30;
     }
 }

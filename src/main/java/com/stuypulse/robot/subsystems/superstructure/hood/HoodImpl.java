@@ -138,6 +138,11 @@ public class HoodImpl extends Hood {
         hoodMotor.setPosition(Rotation2d.fromDegrees(7.7).getRotations()); //empirically found with our current seed at top, then going down manually
     }
 
+    @Override
+    public void zeroEncoderAtCurrentPosition() {
+        hoodMotor.setPosition(0.0);
+    }
+
     private double getAbsoluteHoodAngleDeg() {
         return 0.0; // TODO:change back
         // return Settings.Superstructure.Hood.MIN_FROM_HORIZON.getDegrees() + hoodEncoder.getAbsolutePosition().getValueAsDouble() * 360.0 / Settings.Superstructure.Hood.ENCODER_TO_MECH;
@@ -155,6 +160,7 @@ public class HoodImpl extends Hood {
         if (!hasUsedAbsoluteEncoder) {
             // seedHood();
             seedHoodAtUpperHardStop();
+            setState(HoodState.IDLE);
             hasUsedAbsoluteEncoder = true;
         }
 
@@ -165,6 +171,7 @@ public class HoodImpl extends Hood {
         }
         if (isStalling() && getState() == HoodState.HOMING_LOWER) {
             seedHoodAtLowerHardStop();
+            zeroEncoderAtCurrentPosition();
             setState(HoodState.IDLE);
             SmartDashboard.putBoolean("Superstructure/Hood/SUCCESFULLY HOMED LOWER", true);
         }

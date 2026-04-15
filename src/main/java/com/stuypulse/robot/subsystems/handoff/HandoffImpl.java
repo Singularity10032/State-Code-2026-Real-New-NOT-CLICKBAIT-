@@ -41,8 +41,7 @@ public class HandoffImpl extends Handoff {
     private final Motors.TalonFXConfig handoffConfig;
 
     private final TalonFX motor;
-    // private final VelocityVoltage controller;
-    private final DutyCycleOut controller;
+    private final VelocityVoltage controller;
 
     private Optional<Double> voltageOverride;
     private BStream isStalling;
@@ -70,8 +69,7 @@ public class HandoffImpl extends Handoff {
         motor = new TalonFX(Ports.Handoff.HANDOFF, Ports.CANIVORE);
         handoffConfig.configure(motor);
 
-        // controller = new VelocityVoltage(getTargetRPM() / Settings.SECONDS_IN_A_MINUTE).withEnableFOC(true);
-        controller = new DutyCycleOut(getTargetDutyCycle());
+        controller = new VelocityVoltage(Settings.Handoff.HANDOFF_MAX / Settings.SECONDS_IN_A_MINUTE).withEnableFOC(true);
         voltageOverride = Optional.empty();
 
         motorSupplyCurrent = motor.getSupplyCurrent();
@@ -93,28 +91,34 @@ public class HandoffImpl extends Handoff {
         return motorVelocity.getValueAsDouble() * Settings.SECONDS_IN_A_MINUTE;
     }
 
+    public double getTargetRPM() {
+        return switch (getState()) {
+            case STOP -> 0;
+            case FORWARD -> Settings.Handoff.HANDOFF_RPM.get();
+            case REVERSE -> -Settings.Handoff.HANDOFF_RPM.get();
+        };
+    }
+
     public boolean shouldStop() {
         Superstructure superstructure = Superstructure.getInstance();
         SuperstructureState superstructureState = superstructure.getState();
 
         boolean isStopState = getState() == HandoffState.STOP;
-        boolean isTurretWrapping = superstructure.isTurretWrapping();
         boolean isBehindHubWhileFerrying = superstructureState == SuperstructureState.FOTM
                 && CommandSwerveDrivetrain.getInstance().isBehindHub();
         boolean isOutsideAllianceZone = 
             CommandSwerveDrivetrain.getInstance().isOutsideAllianceZone() && 
-            superstructureState != superstructureState.FOTM;
+            superstructureState != SuperstructureState.FOTM;
         boolean isUnderTrench = CommandSwerveDrivetrain.getInstance().isUnderTrench() 
             && superstructureState != SuperstructureState.FOTM;
         boolean inManualState =       
-            superstructureState == superstructureState.LEFT_CORNER &&
-            superstructureState == superstructureState.RIGHT_CORNER &&
-            superstructureState == superstructureState.KB;
+            superstructureState == SuperstructureState.LEFT_CORNER &&
+            superstructureState == SuperstructureState.RIGHT_CORNER &&
+            superstructureState == SuperstructureState.KB;
 
         boolean turretLaggingSOTM = !superstructure.isTurretAtTolerance() && superstructureState == SuperstructureState.SOTM;
 
         return isStopState || 
-        //isTurretWrapping || 
         (isBehindHubWhileFerrying && !inManualState) || 
         turretLaggingSOTM || 
         (isOutsideAllianceZone  && !inManualState) || 
@@ -139,10 +143,10 @@ public class HandoffImpl extends Handoff {
         if (EnabledSubsystems.HANDOFF.get() && getState() != HandoffState.STOP) {
             if (voltageOverride.isPresent()) {
                 motor.setVoltage(voltageOverride.get());
-            } else if (!manualControlEnabled && (shouldStop() || shouldNotShootIntoHub)) {
+            } else if (!manualControlEnabled && (shouldStop() /* || shouldNotShootIntoHub */)) {
                  motor.stopMotor();
             } else {
-                motor.setControl(controller.withOutput(getTargetDutyCycle()));
+                motor.setControl(controller.withVelocity(getTargetRPM() / Settings.SECONDS_IN_A_MINUTE));
             }
         } else {
              motor.stopMotor();

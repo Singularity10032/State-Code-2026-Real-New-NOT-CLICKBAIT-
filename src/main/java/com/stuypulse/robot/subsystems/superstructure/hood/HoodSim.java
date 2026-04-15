@@ -140,4 +140,9 @@ public class HoodSim extends Hood {
     public void seedHoodAtLowerHardStop() {
         // TODO Auto-generated method stub
     }
+
+    @Override
+    public void zeroEncoderAtCurrentPosition() {
+        // No-op in sim
+    }
 }
