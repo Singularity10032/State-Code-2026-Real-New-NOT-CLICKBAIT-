@@ -178,7 +178,7 @@ public interface Settings {
                 public final SmartNumber FERRY = new SmartNumber("InterpolationTesting/Ferry State Target RPM", 2000.0);
 
                 public final double REVERSE = 0.0;
-                public final double KB = 2720.0; //TODO: OG value 2720.0;
+                public final double KB = 4800.0; //TODO: OG value 2720.0;
                 public final double LEFT_CORNER = 600.0; //TODO: OG 3850.0;
                 public final double RIGHT_CORNER = 3850.0;
             }
