@@ -59,6 +59,8 @@ public class Superstructure extends SubsystemBase {
     public enum SuperstructureState {
         STOW(HoodState.STOW, ShooterState.INTERPOLATION, TurretState.SHOOT),
         SHOOT(HoodState.SHOOT, ShooterState.SHOOT, TurretState.SHOOT),
+        SHOOT_HUB_DIRECT_FRONT(HoodState.HUB_DIRECT_FRONT, ShooterState.SHOOT, TurretState.SHOOT),
+        SHOOT_RIGHT_TRENCH(HoodState.RIGHT_TRENCH, ShooterState.SHOOT, TurretState.SHOOT),
         FERRY(HoodState.FERRY, ShooterState.FERRY, TurretState.FERRY),
         FOTM(HoodState.FOTM, ShooterState.FOTM, TurretState.FOTM),
         REVERSE(HoodState.SHOOT, ShooterState.REVERSE, TurretState.SHOOT),

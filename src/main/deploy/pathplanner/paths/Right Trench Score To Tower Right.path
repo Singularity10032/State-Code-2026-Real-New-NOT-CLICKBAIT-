@@ -8,7 +8,7 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.7682997798007776,
+        "x": 0.7682997798007785,
         "y": 0.6955587674993464
       },
       "isLocked": false,
@@ -50,7 +50,7 @@
     "rotation": 0.0
   },
   "reversed": false,
-  "folder": "To Tower",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0.0,
     "rotation": 90.0

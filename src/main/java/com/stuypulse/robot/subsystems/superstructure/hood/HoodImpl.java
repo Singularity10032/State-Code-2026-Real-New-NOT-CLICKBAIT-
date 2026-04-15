@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 
 import com.ctre.phoenix6.BaseStatusSignal;
 import com.ctre.phoenix6.StatusSignal;
+import com.ctre.phoenix6.configs.MotionMagicConfigs;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -88,6 +89,13 @@ public class HoodImpl extends Hood {
 
         hoodConfig.configure(hoodMotor);
         // hoodEncoderConfig.configure(hoodEncoder);
+
+        hoodMotor
+            .getConfigurator()
+            .apply(new MotionMagicConfigs()
+                .withMotionMagicCruiseVelocity(25.0)
+                .withMotionMagicAcceleration(50.0)
+                .withMotionMagicJerk(200.0));
 
         controller = new PositionVoltage(getTargetAngle().getRotations())
                 .withEnableFOC(true);

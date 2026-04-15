@@ -31,9 +31,9 @@ import com.stuypulse.robot.commands.spindexer.SpindexerStop;
 import com.stuypulse.robot.commands.superstructure.SuperstructureFOTM;
 import com.stuypulse.robot.commands.superstructure.SuperstructureKB;
 import com.stuypulse.robot.commands.superstructure.SuperstructureLeftCorner;
-import com.stuypulse.robot.commands.superstructure.SuperstructureRightCorner;
+import com.stuypulse.robot.commands.superstructure.SuperstructureRightTrench;
+import com.stuypulse.robot.commands.superstructure.SuperstructureSetStateAndRelease;
 import com.stuypulse.robot.commands.superstructure.SuperstructureSOTM;
-import com.stuypulse.robot.commands.superstructure.SuperstructureShoot;
 import com.stuypulse.robot.commands.superstructure.SuperstructureStow;
 import com.stuypulse.robot.commands.swerve.SwerveDriveDrive;
 import com.stuypulse.robot.commands.swerve.SwerveDriveFOTM;
@@ -78,7 +78,6 @@ import com.stuypulse.stuylib.network.SmartBoolean;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.ConditionalCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.RepeatCommand;
@@ -158,26 +157,20 @@ public class RobotContainer {
             .whileTrue(new BuzzController(driver).onlyWhile(() -> !vision.hasData()).repeatedly())
             .whileTrue(
                 new ParallelCommandGroup(
+                    new SuperstructureSetStateAndRelease(SuperstructureState.SHOOT_HUB_DIRECT_FRONT),
                     new RunCommand(
-                        () -> Hood.getInstance().setState(HoodState.HUB_DIRECT_FRONT),
-                        Hood.getInstance()),
-                    new SuperstructureShoot()
-                        .andThen(
-                            Commands.parallel(
-                                new RunCommand(
-                                    () -> handoff.setState(HandoffState.FORWARD),
-                                    handoff),
-                                new RunCommand(
-                                    () -> spindexer.setState(SpindexerState.FORWARD),
-                                    spindexer)
-                            ).repeatedly()
-                        )
+                        () -> handoff.setState(HandoffState.FORWARD),
+                        handoff).withTimeout(10),
+                    new RunCommand(
+                        () -> spindexer.setState(SpindexerState.FORWARD),
+                        spindexer).withTimeout(10)
                 )
             )
             .onFalse(new SpindexerStop()
                 .alongWith(new SuperstructureStow())
                 .alongWith(new HandoffStop()));
         //Intake Stow
+
         driver.getLeftTriggerButton()
                 .onTrue(new RunCommand(() -> Hood.getInstance().setState(HoodState.HOMING_LOWER), Hood.getInstance()))
                 .onFalse(new RunCommand(() -> Hood.getInstance().setState(HoodState.IDLE), Hood.getInstance()));
@@ -274,15 +267,25 @@ public class RobotContainer {
                     )
             .onFalse(new SuperstructureStow().alongWith(new SpindexerStop()).alongWith(new HandoffStop()));
 
-        // Manual Right Corner Scoring
+        // Manual Right Trench Scoring
         driver.getRightButton()
             .whileTrue(new LEDApplyPattern(Settings.LED.RIGHT_CORNER))
             .whileTrue(new SwerveXMode())
-            .onTrue(new IntakeRunRollers())
-            .whileTrue(new SuperstructureRightCorner().alongWith(new WaitUntilCommand(() -> superstructure.atTolerance()))
-                .andThen(new HandoffRun()).alongWith(new WaitUntilCommand(() -> handoff.getState() == HandoffState.FORWARD)
-                .andThen(new SpindexerRun())))
-            .onFalse(new SuperstructureStow().alongWith(new SpindexerStop()).alongWith(new HandoffStop()));
+            .whileTrue(new BuzzController(driver).onlyWhile(() -> superstructure.atTolerance()).repeatedly())
+            .whileTrue(
+                new ParallelCommandGroup(
+                    new SuperstructureRightTrench(),
+                    new RunCommand(
+                        () -> handoff.setState(HandoffState.FORWARD),
+                        handoff).withTimeout(10),
+                    new RunCommand(
+                        () -> spindexer.setState(SpindexerState.FORWARD),
+                        spindexer).withTimeout(10)
+                )
+            )
+            .onFalse(new SpindexerStop()
+                .alongWith(new SuperstructureStow())
+                .alongWith(new HandoffStop()));
 
         // Manual KB Distance Scoring
         driver.getBottomButton()

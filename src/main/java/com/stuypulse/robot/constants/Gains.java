@@ -24,9 +24,9 @@ public class Gains {
         }
 
         public interface Hood {
-            double kP = 50.0;
+            double kP = 250.0;
             double kI = 0.0;
-            double kD = 0.0;
+            double kD = 5.0;
 
             double kS = 0.25;
             double kV = 0.0;

@@ -201,8 +201,7 @@ public class IntakeImpl extends Intake {
                 }
 
                 // ROLLERS
-                if (pivotState == PivotState.DEPLOY
-                        && getPivotAngle().getDegrees() <= Settings.Intake.THRESHOLD_TO_START_ROLLERS.getDegrees()) {
+                if (pivotState == PivotState.DEPLOY) {
                     rollerLeader.setControl(rollerController.withOutput(getRollerState().getTargetDutyCycle()));
                 } else {
                     rollerLeader.stopMotor();

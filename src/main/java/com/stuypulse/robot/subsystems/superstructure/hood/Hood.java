@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 public abstract class Hood extends SubsystemBase{
     private static final Hood instance;
     
-    private HoodState state;
+    private HoodState state = HoodState.IDLE;
 
     private Rotation2d driverInput;
 
@@ -47,6 +47,7 @@ public abstract class Hood extends SubsystemBase{
         LEFT_CORNER,
         RIGHT_CORNER,
         HUB_DIRECT_FRONT,
+        RIGHT_TRENCH,
         INTERPOLATION,
         SOTM,
         FOTM,
@@ -81,6 +82,7 @@ public abstract class Hood extends SubsystemBase{
             case LEFT_CORNER -> Settings.Superstructure.Hood.Angles.LEFT_CORNER;
             case RIGHT_CORNER -> Settings.Superstructure.Hood.Angles.RIGHT_CORNER;
             case HUB_DIRECT_FRONT -> Settings.Superstructure.Hood.Angles.HUB_DIRECT_FRONT;
+            case RIGHT_TRENCH -> Settings.Superstructure.Hood.Angles.RIGHT_TRENCH;
             case INTERPOLATION -> InterpolationCalculator.interpolateShotInfo().targetHoodAngle();
             case HOMING_UPPER -> new Rotation2d(); //should just apply a voltage, not an angle!
             case HOMING_LOWER -> new Rotation2d();

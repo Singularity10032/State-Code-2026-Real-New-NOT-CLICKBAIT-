@@ -64,7 +64,7 @@
     "rotation": 180.0
   },
   "reversed": false,
-  "folder": "Right Bump",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0

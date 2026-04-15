@@ -64,7 +64,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "To NZ",
+  "folder": null,
   "idealStartingState": {
     "velocity": 0,
     "rotation": -76.49029381374567

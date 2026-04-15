@@ -173,7 +173,7 @@ public class IntakeSim extends Intake {
                 pivotSim.setInputVoltage(pivotController.getU(0));
             }
 
-            if (pivotState == PivotState.DEPLOY && getPivotAngle().getDegrees() <= Settings.Intake.THRESHOLD_TO_START_ROLLERS.getDegrees()) {
+            if (pivotState == PivotState.DEPLOY) {
                 rollerLeaderSim.setInput(rollerLeaderController.getU(0));
                 rollerFollowerSim.setInput(rollerFollowerController.getU(0));
             } else {
