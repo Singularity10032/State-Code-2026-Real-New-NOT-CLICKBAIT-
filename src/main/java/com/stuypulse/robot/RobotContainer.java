@@ -257,7 +257,6 @@ public class RobotContainer {
 
         // Manual Left Corner Scoring
         driver.getLeftButton()
-            .whileTrue(new BuzzController(driver).onlyWhile(() -> !vision.hasData()).repeatedly())
             .onTrue(new LEDApplyPattern(Settings.LED.LEFT_CORNER))
             .onTrue(
                 new DriveToVisionPosition(DriveToVisionPosition.VisionPositioningConstants.VISION_SHOOTING_POSITION_1)
