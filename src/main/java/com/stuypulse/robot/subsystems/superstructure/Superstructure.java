@@ -67,6 +67,7 @@ public class Superstructure extends SubsystemBase {
         LEFT_CORNER(HoodState.LEFT_CORNER, ShooterState.LEFT_CORNER, TurretState.LEFT_CORNER),
         RIGHT_CORNER(HoodState.RIGHT_CORNER, ShooterState.RIGHT_CORNER, TurretState.RIGHT_CORNER),
         SHOOT_RIGHT_TRENCH(HoodState.RIGHT_TRENCH, ShooterState.SHOOT, TurretState.SHOOT),
+        SHOOT_LEFT_TRENCH(HoodState.LEFT_TRENCH, ShooterState.SHOOT, TurretState.SHOOT),
         INTERPOLATION(HoodState.INTERPOLATION, ShooterState.INTERPOLATION, TurretState.SHOOT),
         AUTO_INTERPOLATION(HoodState.STOW, ShooterState.INTERPOLATION, TurretState.SHOOT),
         AUTO_INTERPOLATION_SOTM(HoodState.STOW, ShooterState.SOTM, TurretState.SOTM),
