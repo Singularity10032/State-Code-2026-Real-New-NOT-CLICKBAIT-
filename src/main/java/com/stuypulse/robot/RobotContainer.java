@@ -10,6 +10,7 @@ import com.stuypulse.robot.commands.auton.DoNothingAuton;
 import com.stuypulse.robot.commands.auton.regular.DepotAuton;
 import com.stuypulse.robot.commands.auton.regular.LeftBumpTwoCycle;
 import com.stuypulse.robot.commands.auton.regular.LeftTwoCycle;
+import com.stuypulse.robot.commands.auton.regular.PreshootFromTrench;
 import com.stuypulse.robot.commands.auton.regular.RightBumpTwoCycle;
 import com.stuypulse.robot.commands.auton.regular.RightTwoCycle;
 import com.stuypulse.robot.commands.handoff.HandoffReverse;
@@ -434,6 +435,11 @@ public class RobotContainer {
         AutonConfig DEPOT_AUTON = new AutonConfig("Depot Auton", DepotAuton::new, 
         "Left Bump To Depot", "Depot To Tower Left");
         DEPOT_AUTON.register(autonChooser);
+
+        // PRESHOOT FROM TRENCH
+        AutonConfig PRESHOOT_FROM_TRENCH = new AutonConfig("Preshoot From Trench", PreshootFromTrench::new,
+            "Hub to Tower");
+        PRESHOOT_FROM_TRENCH.register(autonChooser);
 
         // TWO CYCLES (TRENCH)
         AutonConfig LEFT_TWO_CYCLE = new AutonConfig("Left Two Cycle", LeftTwoCycle::new,  
