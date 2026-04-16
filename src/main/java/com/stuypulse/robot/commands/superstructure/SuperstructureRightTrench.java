@@ -5,5 +5,6 @@ import com.stuypulse.robot.subsystems.superstructure.Superstructure.Superstructu
 public class SuperstructureRightTrench extends SuperstructureSetState {
     public SuperstructureRightTrench() {
         super(SuperstructureState.SHOOT_RIGHT_TRENCH);
+    
     }
 }
