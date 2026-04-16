@@ -144,7 +144,7 @@ public class HandoffImpl extends Handoff {
             if (voltageOverride.isPresent()) {
                 motor.setVoltage(voltageOverride.get());
             } else if (!manualControlEnabled && (shouldStop() /* || shouldNotShootIntoHub */)) {
-                 motor.stopMotor();
+                motor.stopMotor();
             } else {
                 motor.setControl(controller.withVelocity(getTargetRPM() / Settings.SECONDS_IN_A_MINUTE));
             }
