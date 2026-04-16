@@ -274,7 +274,8 @@ public class RobotContainer {
             .whileTrue(new BuzzController(driver).onlyWhile(() -> superstructure.atTolerance()).repeatedly())
             .whileTrue(
                 new ParallelCommandGroup(
-                    new SuperstructureRightCorner(), //Preexisting class, changed to our hood preset values for right trench
+                    new SuperstructureSetStateAndRelease(SuperstructureState.SHOOT_RIGHT_TRENCH),
+                    //TODO: when testing, change variable RIGHT_TRENCH in settings.javagt under hood angles
                     new RunCommand(
                         () -> handoff.setState(HandoffState.FORWARD),
                         handoff).withTimeout(10),
