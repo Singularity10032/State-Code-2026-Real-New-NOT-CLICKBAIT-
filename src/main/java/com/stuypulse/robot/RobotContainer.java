@@ -31,7 +31,7 @@ import com.stuypulse.robot.commands.spindexer.SpindexerStop;
 import com.stuypulse.robot.commands.superstructure.SuperstructureFOTM;
 import com.stuypulse.robot.commands.superstructure.SuperstructureKB;
 import com.stuypulse.robot.commands.superstructure.SuperstructureLeftCorner;
-import com.stuypulse.robot.commands.superstructure.SuperstructureRightTrench;
+import com.stuypulse.robot.commands.superstructure.SuperstructureRightCorner;
 import com.stuypulse.robot.commands.superstructure.SuperstructureSetStateAndRelease;
 import com.stuypulse.robot.commands.superstructure.SuperstructureSOTM;
 import com.stuypulse.robot.commands.superstructure.SuperstructureStow;
@@ -274,7 +274,7 @@ public class RobotContainer {
             .whileTrue(new BuzzController(driver).onlyWhile(() -> superstructure.atTolerance()).repeatedly())
             .whileTrue(
                 new ParallelCommandGroup(
-                    new SuperstructureRightTrench(),
+                    new SuperstructureRightCorner(), //Preexisting class, changed to our hood preset values for right trench
                     new RunCommand(
                         () -> handoff.setState(HandoffState.FORWARD),
                         handoff).withTimeout(10),
