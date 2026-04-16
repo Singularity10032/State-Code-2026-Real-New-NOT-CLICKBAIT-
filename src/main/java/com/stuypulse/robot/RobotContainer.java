@@ -35,6 +35,7 @@ import com.stuypulse.robot.commands.superstructure.SuperstructureRightCorner;
 import com.stuypulse.robot.commands.superstructure.SuperstructureSetStateAndRelease;
 import com.stuypulse.robot.commands.superstructure.SuperstructureSOTM;
 import com.stuypulse.robot.commands.superstructure.SuperstructureStow;
+import com.stuypulse.robot.commands.swerve.DriveToVisionPosition;
 import com.stuypulse.robot.commands.swerve.SwerveDriveDrive;
 import com.stuypulse.robot.commands.swerve.SwerveDriveFOTM;
 import com.stuypulse.robot.commands.swerve.SwerveDriveSOTM;
@@ -256,33 +257,43 @@ public class RobotContainer {
 
         // Manual Left Corner Scoring
         driver.getLeftButton()
+            .onTrue(new LEDApplyPattern(Settings.LED.LEFT_CORNER))
             .onTrue(
-                new ParallelCommandGroup(
-                    new IntakeRunRollers(),
-                    new SuperstructureLeftCorner().alongWith(new WaitUntilCommand(() -> superstructure.atTolerance()))
-                        .andThen(new HandoffRun())
-                        .andThen(new SpindexerRun()),
-                    new SwerveXMode()
-                )
+                new DriveToVisionPosition(DriveToVisionPosition.VisionPositioningConstants.VISION_SHOOTING_POSITION_1)
+                    .andThen(
+                        new ParallelCommandGroup(
+                            new SuperstructureSetStateAndRelease(SuperstructureState.SHOOT_LEFT_TRENCH),
+                            new RunCommand(
+                                () -> handoff.setState(HandoffState.FORWARD),
+                                handoff).withTimeout(10),
+                            new RunCommand(
+                                () -> spindexer.setState(SpindexerState.FORWARD),
+                                spindexer).withTimeout(10)
+                        )
                     )
-            .onFalse(new SuperstructureStow().alongWith(new SpindexerStop()).alongWith(new HandoffStop()));
+            )
+            .onFalse(new SpindexerStop()
+                .alongWith(new SuperstructureStow())
+                .alongWith(new HandoffStop()));
 
-        // Manual Right Trench Scoring
+        // Vision-Based Right Button Scoring (Tags 11, 2, 18, 27)
+        // Driver: Move to vision position, then shoot
         driver.getRightButton()
-            .whileTrue(new LEDApplyPattern(Settings.LED.RIGHT_CORNER))
-            .whileTrue(new SwerveXMode())
-            .whileTrue(new BuzzController(driver).onlyWhile(() -> superstructure.atTolerance()).repeatedly())
-            .whileTrue(
-                new ParallelCommandGroup(
-                    new SuperstructureSetStateAndRelease(SuperstructureState.SHOOT_RIGHT_TRENCH),
-                    //TODO: when testing, change variable RIGHT_TRENCH in settings.javagt under hood angles
-                    new RunCommand(
-                        () -> handoff.setState(HandoffState.FORWARD),
-                        handoff).withTimeout(10),
-                    new RunCommand(
-                        () -> spindexer.setState(SpindexerState.FORWARD),
-                        spindexer).withTimeout(10)
-                )
+            .whileTrue(new BuzzController(driver).onlyWhile(() -> !vision.hasData()).repeatedly())
+            .onTrue(new LEDApplyPattern(Settings.LED.RIGHT_CORNER))
+            .onTrue(
+                new DriveToVisionPosition(DriveToVisionPosition.VisionPositioningConstants.VISION_SHOOTING_POSITION_2)
+                    .andThen(
+                        new ParallelCommandGroup(
+                            new SuperstructureSetStateAndRelease(SuperstructureState.SHOOT_RIGHT_TRENCH),
+                            new RunCommand(
+                                () -> handoff.setState(HandoffState.FORWARD),
+                                handoff).withTimeout(10),
+                            new RunCommand(
+                                () -> spindexer.setState(SpindexerState.FORWARD),
+                                spindexer).withTimeout(10)
+                        )
+                    )
             )
             .onFalse(new SpindexerStop()
                 .alongWith(new SuperstructureStow())

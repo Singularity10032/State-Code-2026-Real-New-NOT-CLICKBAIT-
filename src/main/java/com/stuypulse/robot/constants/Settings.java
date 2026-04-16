@@ -387,4 +387,5 @@ public interface Settings {
 
         public final double BUZZ_DEBOUNCE = 0.25;
     }
+
 }
