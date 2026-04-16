@@ -226,6 +226,7 @@ public interface Settings {
                 public final Rotation2d KB = Rotation2d.fromDegrees(25.0);
                 public final Rotation2d HUB_DIRECT_FRONT = Rotation2d.fromDegrees(70.0);
                 public final Rotation2d RIGHT_TRENCH = Rotation2d.fromDegrees(85.0);
+                public final Rotation2d LEFT_TRENCH = Rotation2d.fromDegrees(83.0);
                 public final Rotation2d LEFT_CORNER = Rotation2d.fromDegrees(38.0);
                 public final Rotation2d RIGHT_CORNER = Rotation2d.fromDegrees(38.0);
             }
@@ -387,4 +388,5 @@ public interface Settings {
 
         public final double BUZZ_DEBOUNCE = 0.25;
     }
+
 }
