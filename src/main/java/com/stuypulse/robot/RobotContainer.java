@@ -37,6 +37,7 @@ import com.stuypulse.robot.commands.superstructure.SuperstructureSetStateAndRele
 import com.stuypulse.robot.commands.superstructure.SuperstructureSOTM;
 import com.stuypulse.robot.commands.superstructure.SuperstructureStow;
 import com.stuypulse.robot.commands.swerve.DriveToVisionPosition;
+import com.stuypulse.robot.commands.swerve.RobotFaceHubAndShoot;
 import com.stuypulse.robot.commands.swerve.SwerveDriveDrive;
 import com.stuypulse.robot.commands.swerve.SwerveDriveFOTM;
 import com.stuypulse.robot.commands.swerve.SwerveDriveSOTM;
@@ -197,17 +198,23 @@ public class RobotContainer {
             .onTrue(new LEDApplyPattern(Settings.LED.RESET_HEADING))
             .onFalse(new SetIMUMode(0));   
 
-        // Stop Rollers
+        // Left Bumper - Reverse Intake while held, resume intaking when released
         driver.getLeftBumper()
-            .onTrue(new LEDApplyPattern(Settings.LED.STOP_ROLLERS))
-            .onTrue(new IntakeStopRollers());
-             
-
-        // Outtake
-        driver.getRightBumper()
             .whileTrue(new LEDApplyPattern(Settings.LED.REVERSE))
             .whileTrue(new IntakeOuttake())
             .onFalse(new IntakeRunRollers());
+             
+
+        // Outtake
+        // driver.getRightBumper()
+        //     .whileTrue(new LEDApplyPattern(Settings.LED.REVERSE))
+        //     .whileTrue(new IntakeOuttake())
+        //     .onFalse(new IntakeRunRollers());
+        
+        // Right Bumper - Face Hub and Shoot (no turret required)
+        driver.getRightBumper()
+            .whileTrue(new RobotFaceHubAndShoot())
+            .onFalse(new SuperstructureStow().alongWith(new HandoffStop()).alongWith(new SpindexerStop()));
         
         // SOTM (BR)
         driver.getRightMenuButton()
@@ -314,6 +321,7 @@ public class RobotContainer {
                 .alongWith(new SpindexerRun()))  )
                 //TODO if broken change this from and then back to along with.
             .onFalse(new SuperstructureStow().alongWith(new SpindexerStop()).alongWith(new HandoffStop()));
+
     }
 
     /***************/

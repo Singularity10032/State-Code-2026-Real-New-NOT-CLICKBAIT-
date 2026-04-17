@@ -28,11 +28,13 @@ public class DriveToVisionPosition extends Command {
      */
     public interface VisionPositioningConstants {
         // Target shooting positions for vision-based positioning
+        // POSITION_1: Right trench - middle of right trench area
         Pose2d VISION_SHOOTING_POSITION_1 = 
-            new Pose2d(2.0, 2.5, Rotation2d.fromDegrees(0.0));
+            new Pose2d(2.0, 0.64, Rotation2d.fromDegrees(0.0));
         
+        // POSITION_2: Left trench - middle of left trench area
         Pose2d VISION_SHOOTING_POSITION_2 = 
-            new Pose2d(2.0, 5.5, Rotation2d.fromDegrees(0.0));
+            new Pose2d(2.0, 7.71, Rotation2d.fromDegrees(0.0));
         
         // Position movement tolerances
         double POSITION_TOLERANCE_METERS = 0.05; // 5cm
