@@ -100,6 +100,7 @@ public class HandoffImpl extends Handoff {
     }
 
     public boolean shouldStop() {
+            //TODO: the issue with the handoff not working is most likely from either the behind hub while ferrying, outside alliance zone, or the under trench boolean.
         Superstructure superstructure = Superstructure.getInstance();
         SuperstructureState superstructureState = superstructure.getState();
 
@@ -112,8 +113,9 @@ public class HandoffImpl extends Handoff {
         boolean isUnderTrench = CommandSwerveDrivetrain.getInstance().isUnderTrench() 
             && superstructureState != SuperstructureState.FOTM;
         boolean inManualState =       
-            superstructureState == SuperstructureState.LEFT_CORNER &&
-            superstructureState == SuperstructureState.RIGHT_CORNER &&
+        //TODO: changing the former &&'s to ||'s so that it stops checking if the superstructure state 3 different states at the same time
+            superstructureState == SuperstructureState.LEFT_CORNER ||
+            superstructureState == SuperstructureState.RIGHT_CORNER ||
             superstructureState == SuperstructureState.KB;
 
         boolean turretLaggingSOTM = !superstructure.isTurretAtTolerance() && superstructureState == SuperstructureState.SOTM;

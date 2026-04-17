@@ -10,6 +10,7 @@ import com.stuypulse.robot.commands.auton.DoNothingAuton;
 import com.stuypulse.robot.commands.auton.regular.DepotAuton;
 import com.stuypulse.robot.commands.auton.regular.LeftBumpTwoCycle;
 import com.stuypulse.robot.commands.auton.regular.LeftTwoCycle;
+import com.stuypulse.robot.commands.auton.regular.PreshootFromTrench;
 import com.stuypulse.robot.commands.auton.regular.RightBumpTwoCycle;
 import com.stuypulse.robot.commands.auton.regular.RightTwoCycle;
 import com.stuypulse.robot.commands.handoff.HandoffReverse;
@@ -99,8 +100,8 @@ public class RobotContainer {
         SmartBoolean LEDS = new SmartBoolean("Enabled Subsystems/LEDs Is Enabled", true);
 
         SmartBoolean BACK_LIMELIGHT = new SmartBoolean("Enabled Subsystems/Back Limelight Is Enabled", true);
-        SmartBoolean LEFT_LIMELIGHT = new SmartBoolean("Enabled Subsystems/Left Limelight Is Enabled", true);
-        SmartBoolean RIGHT_LIMELIGHT = new SmartBoolean("Enabled Subsystems/Right Limelight Is Enabled", true);
+        SmartBoolean LEFT_LIMELIGHT = new SmartBoolean("Enabled Subsystems/Left Limelight Is Enabled", false);
+        SmartBoolean RIGHT_LIMELIGHT = new SmartBoolean("Enabled Subsystems/Right Limelight Is Enabled", false);
     }
 
     // Gamepads
@@ -171,6 +172,10 @@ public class RobotContainer {
                 .alongWith(new SuperstructureStow())
                 .alongWith(new HandoffStop()));
         //Intake Stow
+        /* 
+         *  driver.getLeftTriggerButton()
+        //     .onTrue(new IntakeStow());
+         */
 
         driver.getLeftTriggerButton()
                 .onTrue(new RunCommand(() -> Hood.getInstance().setState(HoodState.HOMING_LOWER), Hood.getInstance()))
@@ -445,6 +450,11 @@ public class RobotContainer {
         AutonConfig DEPOT_AUTON = new AutonConfig("Depot Auton", DepotAuton::new, 
         "Left Bump To Depot", "Depot To Tower Left");
         DEPOT_AUTON.register(autonChooser);
+
+        // PRESHOOT FROM TRENCH
+        AutonConfig PRESHOOT_FROM_TRENCH = new AutonConfig("Preshoot From Trench", PreshootFromTrench::new,
+            "Hub to Tower");
+        PRESHOOT_FROM_TRENCH.register(autonChooser);
 
         // TWO CYCLES (TRENCH)
         AutonConfig LEFT_TWO_CYCLE = new AutonConfig("Left Two Cycle", LeftTwoCycle::new,  

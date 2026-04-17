@@ -79,8 +79,8 @@ public interface Settings {
         double HOMING_VOLTAGE = 3.0;
         
         double PUSHDOWN_VOLTAGE = 3.0;
-
-        double GEAR_RATIO = 37.93;
+        //TODO: origin 37.93
+        double GEAR_RATIO = 20;
         
         double STALL_CURRENT_LIMIT = 0; //TODO: set value
         double STALL_DEBOUNCE = 1.0; //TODO: VERIFY
@@ -223,7 +223,7 @@ public interface Settings {
                 public final Rotation2d MAX = Rotation2d.fromDegrees(40.0);
 
                 public final Rotation2d STOW = Rotation2d.fromDegrees(21.0);
-                public final Rotation2d KB = Rotation2d.fromDegrees(34);
+                public final Rotation2d KB = Rotation2d.fromDegrees(39);
                 public final Rotation2d HUB_DIRECT_FRONT = Rotation2d.fromDegrees(70.0);
                 public final Rotation2d RIGHT_TRENCH = Rotation2d.fromDegrees(85.0);
                 public final Rotation2d LEFT_TRENCH = Rotation2d.fromDegrees(83.0);
