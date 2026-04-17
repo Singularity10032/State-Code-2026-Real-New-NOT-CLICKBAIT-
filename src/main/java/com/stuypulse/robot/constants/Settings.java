@@ -80,9 +80,9 @@ public interface Settings {
         
         double PUSHDOWN_VOLTAGE = 3.0;
         //TODO: origin 37.93
-        double GEAR_RATIO = 20;
+        double GEAR_RATIO = 20; 
         
-        double STALL_CURRENT_LIMIT = 0; //TODO: set value
+        double STALL_CURRENT_LIMIT = 40; //TODO: OG was zero set to 40 - Kav1n
         double STALL_DEBOUNCE = 1.0; //TODO: VERIFY
     }
 
