@@ -6,6 +6,7 @@ plugins {
 
 allprojects {
     repositories {
+        mavenLocal()
         maven { url 'https://jitpack.io' }
     }
 }
@@ -84,7 +85,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.1'
 
-    implementation "com.github.StuyPulse:StuyLib:${STUYLIB_VERSION}";
+    implementation "com.stuypulse.stuylib:library:unspecified"
 }
 
 // Simulation configuration (e.g. environment variables).
