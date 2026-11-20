@@ -1,21 +1,21 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.commands.swerve;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.commands.swerve;
 
-import com.stuypulse.stuylib.control.angle.AngleController;
-import com.stuypulse.stuylib.control.angle.feedback.AnglePIDController;
-import com.stuypulse.stuylib.math.Angle;
-import com.stuypulse.stuylib.streams.angles.filters.AMotionProfile;
+import com.singularity.lib.control.angle.AngleController;
+import com.singularity.lib.control.angle.feedback.AnglePIDController;
+import com.singularity.lib.math.Angle;
+import com.singularity.lib.streams.angles.filters.AMotionProfile;
 
-import com.stuypulse.robot.constants.Field;
-import com.stuypulse.robot.constants.Gains.Swerve.Alignment;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.subsystems.superstructure.turret.Turret;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
-import com.stuypulse.robot.util.superstructure.TurretAngleCalculator;
+import com.singularity.robot.constants.Field;
+import com.singularity.robot.constants.Gains.Swerve.Alignment;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.subsystems.superstructure.turret.Turret;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.util.superstructure.TurretAngleCalculator;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;

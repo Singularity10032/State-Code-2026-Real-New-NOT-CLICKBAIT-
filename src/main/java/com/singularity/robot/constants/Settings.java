@@ -1,17 +1,17 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.constants;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.constants;
 
 import java.sql.Time;
 import java.time.Duration;
 
 import com.ctre.phoenix6.CANBus;
 import com.pathplanner.lib.path.PathConstraints;
-import com.stuypulse.stuylib.network.SmartBoolean;
-import com.stuypulse.stuylib.network.SmartNumber;
+import com.singularity.lib.network.SmartBoolean;
+import com.singularity.lib.network.SmartNumber;
 
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.Vector;
@@ -36,7 +36,7 @@ import edu.wpi.first.wpilibj.util.Color;
 /*-
  * File containing constants and tunable settings for every subsystem on the robot.
  *
- * We use StuyLib's SmartNumber / SmartBoolean in order to have tunable
+ * We use SingularityLib's SmartNumber / SmartBoolean in order to have tunable
  * values that we can edit on Shuffleboard.
  */
 

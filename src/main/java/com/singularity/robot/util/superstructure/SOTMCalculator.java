@@ -1,22 +1,22 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.util.superstructure;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.util.superstructure;
 
 
 import com.ctre.phoenix6.hardware.Pigeon2;
-import com.stuypulse.robot.Robot;
-import com.stuypulse.robot.constants.Field;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.subsystems.superstructure.hood.Hood;
-import com.stuypulse.robot.subsystems.superstructure.shooter.Shooter;
-import com.stuypulse.robot.subsystems.superstructure.turret.Turret;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
-import com.stuypulse.robot.util.superstructure.InterpolationCalculator.InterpolatedFerryInfo;
-import com.stuypulse.robot.util.superstructure.InterpolationCalculator.InterpolatedShotInfo;
-import com.stuypulse.stuylib.network.SmartBoolean;
+import com.singularity.robot.Robot;
+import com.singularity.robot.constants.Field;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.subsystems.superstructure.hood.Hood;
+import com.singularity.robot.subsystems.superstructure.shooter.Shooter;
+import com.singularity.robot.subsystems.superstructure.turret.Turret;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.util.superstructure.InterpolationCalculator.InterpolatedFerryInfo;
+import com.singularity.robot.util.superstructure.InterpolationCalculator.InterpolatedShotInfo;
+import com.singularity.lib.network.SmartBoolean;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;

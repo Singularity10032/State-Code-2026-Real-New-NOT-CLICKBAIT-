@@ -1,13 +1,13 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.constants;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.constants;
 
-import com.stuypulse.stuylib.network.SmartBoolean;
+import com.singularity.lib.network.SmartBoolean;
 
-import com.stuypulse.robot.RobotContainer;
+import com.singularity.robot.RobotContainer;
 
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation3d;

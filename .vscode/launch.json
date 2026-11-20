@@ -8,7 +8,7 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
-      "mainClass": "com.stuypulse.robot.Main",
+      "mainClass": "com.singularity.robot.Main",
       "projectName": "2026-Robot"
     },
     {

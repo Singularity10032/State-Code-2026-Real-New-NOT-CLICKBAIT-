@@ -1,24 +1,24 @@
-/** ********************** PROJECT TRIBECBOT ************************ */
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
- /* Use of this source code is governed by an MIT-style license */
- /* that can be found in the repository LICENSE file.           */
-/** ************************************************************ */
-package com.stuypulse.robot.subsystems.vision;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.subsystems.vision;
 
 import java.util.Arrays;
 
-import com.stuypulse.robot.Robot;
-import com.stuypulse.robot.commands.vision.BlacklistAllTags;
-import com.stuypulse.robot.constants.Cameras;
-import com.stuypulse.robot.constants.Field;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
-import com.stuypulse.robot.util.vision.LimelightHelpers;
-import com.stuypulse.robot.util.vision.LimelightHelpers.IMUData;
-import com.stuypulse.robot.util.vision.LimelightHelpers.PoseEstimate;
-import com.stuypulse.stuylib.network.SmartBoolean;
-import com.stuypulse.stuylib.streams.booleans.BStream;
-import com.stuypulse.stuylib.streams.booleans.filters.BDebounce;
+import com.singularity.robot.Robot;
+import com.singularity.robot.commands.vision.BlacklistAllTags;
+import com.singularity.robot.constants.Cameras;
+import com.singularity.robot.constants.Field;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.util.vision.LimelightHelpers;
+import com.singularity.robot.util.vision.LimelightHelpers.IMUData;
+import com.singularity.robot.util.vision.LimelightHelpers.PoseEstimate;
+import com.singularity.lib.network.SmartBoolean;
+import com.singularity.lib.streams.booleans.BStream;
+import com.singularity.lib.streams.booleans.filters.BDebounce;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;

@@ -1,22 +1,22 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot;
 
-import com.stuypulse.robot.commands.swerve.SwerveAutonInit;
-import com.stuypulse.robot.commands.swerve.SwerveTeleopInit;
-import com.stuypulse.robot.commands.vision.SetMegaTagMode;
-import com.stuypulse.robot.commands.vision.WhitelistAllTagsForAllCameras;
-import com.stuypulse.robot.commands.vision.WhitelistRoutineLeftSideAuto;
-import com.stuypulse.robot.commands.vision.WhitelistRoutineRightSideAuto;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.subsystems.superstructure.Superstructure;
-import com.stuypulse.robot.subsystems.superstructure.Superstructure.SuperstructureState;
-import com.stuypulse.robot.subsystems.vision.LimelightVision;
-import com.stuypulse.robot.util.EnergyUtil;
-import com.stuypulse.robot.util.superstructure.SOTMCalculator;
+import com.singularity.robot.commands.swerve.SwerveAutonInit;
+import com.singularity.robot.commands.swerve.SwerveTeleopInit;
+import com.singularity.robot.commands.vision.SetMegaTagMode;
+import com.singularity.robot.commands.vision.WhitelistAllTagsForAllCameras;
+import com.singularity.robot.commands.vision.WhitelistRoutineLeftSideAuto;
+import com.singularity.robot.commands.vision.WhitelistRoutineRightSideAuto;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.subsystems.superstructure.Superstructure;
+import com.singularity.robot.subsystems.superstructure.Superstructure.SuperstructureState;
+import com.singularity.robot.subsystems.vision.LimelightVision;
+import com.singularity.robot.util.EnergyUtil;
+import com.singularity.robot.util.superstructure.SOTMCalculator;
 
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;

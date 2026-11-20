@@ -1,15 +1,13 @@
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.subsystems.leds;
 
-/************************ PROJECT MARY *************************/
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-
-package com.stuypulse.robot.subsystems.leds;
-
-import com.stuypulse.robot.RobotContainer;
-import com.stuypulse.robot.constants.Ports;
-import com.stuypulse.robot.constants.Settings;
+import com.singularity.robot.RobotContainer;
+import com.singularity.robot.constants.Ports;
+import com.singularity.robot.constants.Settings;
 
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;

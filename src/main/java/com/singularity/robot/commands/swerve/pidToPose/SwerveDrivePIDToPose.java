@@ -1,28 +1,28 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.commands.swerve.pidToPose;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.commands.swerve.pidToPose;
 
-import com.stuypulse.stuylib.control.angle.feedback.AnglePIDController;
-import com.stuypulse.stuylib.control.feedback.PIDController;
-import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.streams.angles.filters.AMotionProfile;
-import com.stuypulse.stuylib.streams.booleans.BStream;
-import com.stuypulse.stuylib.streams.booleans.filters.BDebounceRC;
-import com.stuypulse.stuylib.streams.numbers.IStream;
-import com.stuypulse.stuylib.streams.numbers.filters.LowPassFilter;
-import com.stuypulse.stuylib.streams.numbers.filters.MotionProfile;
-import com.stuypulse.stuylib.streams.vectors.VStream;
-import com.stuypulse.stuylib.streams.vectors.filters.VFilter;
+import com.singularity.lib.control.angle.feedback.AnglePIDController;
+import com.singularity.lib.control.feedback.PIDController;
+import com.singularity.lib.math.Vector2D;
+import com.singularity.lib.streams.angles.filters.AMotionProfile;
+import com.singularity.lib.streams.booleans.BStream;
+import com.singularity.lib.streams.booleans.filters.BDebounceRC;
+import com.singularity.lib.streams.numbers.IStream;
+import com.singularity.lib.streams.numbers.filters.LowPassFilter;
+import com.singularity.lib.streams.numbers.filters.MotionProfile;
+import com.singularity.lib.streams.vectors.VStream;
+import com.singularity.lib.streams.vectors.filters.VFilter;
 
-import com.stuypulse.robot.Robot;
-import com.stuypulse.robot.constants.Field;
-import com.stuypulse.robot.constants.Gains.Swerve.Alignment;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
-import com.stuypulse.robot.util.HolonomicController;
+import com.singularity.robot.Robot;
+import com.singularity.robot.constants.Field;
+import com.singularity.robot.constants.Gains.Swerve.Alignment;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.util.HolonomicController;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;

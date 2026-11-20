@@ -1,30 +1,28 @@
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.commands.leds;
 
-/************************ PROJECT MARY *************************/
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-
-package com.stuypulse.robot.commands.leds;
-
-import com.stuypulse.robot.Robot;
-import com.stuypulse.robot.Robot.RobotMode;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.subsystems.handoff.Handoff;
-import com.stuypulse.robot.subsystems.handoff.Handoff.HandoffState;
-import com.stuypulse.robot.subsystems.intake.Intake;
-import com.stuypulse.robot.subsystems.intake.Intake.PivotState;
-import com.stuypulse.robot.subsystems.intake.Intake.RollerState;
-import com.stuypulse.robot.subsystems.leds.LEDController;
-import com.stuypulse.robot.subsystems.spindexer.Spindexer;
-import com.stuypulse.robot.subsystems.spindexer.Spindexer.SpindexerState;
-import com.stuypulse.robot.subsystems.superstructure.Superstructure;
-import com.stuypulse.robot.subsystems.superstructure.Superstructure.SuperstructureState;
-import com.stuypulse.robot.subsystems.superstructure.hood.Hood;
-import com.stuypulse.robot.subsystems.superstructure.shooter.Shooter;
-import com.stuypulse.robot.subsystems.superstructure.turret.Turret;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
-import com.stuypulse.robot.subsystems.vision.LimelightVision;
+import com.singularity.robot.Robot;
+import com.singularity.robot.Robot.RobotMode;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.subsystems.handoff.Handoff;
+import com.singularity.robot.subsystems.handoff.Handoff.HandoffState;
+import com.singularity.robot.subsystems.intake.Intake;
+import com.singularity.robot.subsystems.intake.Intake.PivotState;
+import com.singularity.robot.subsystems.intake.Intake.RollerState;
+import com.singularity.robot.subsystems.leds.LEDController;
+import com.singularity.robot.subsystems.spindexer.Spindexer;
+import com.singularity.robot.subsystems.spindexer.Spindexer.SpindexerState;
+import com.singularity.robot.subsystems.superstructure.Superstructure;
+import com.singularity.robot.subsystems.superstructure.Superstructure.SuperstructureState;
+import com.singularity.robot.subsystems.superstructure.hood.Hood;
+import com.singularity.robot.subsystems.superstructure.shooter.Shooter;
+import com.singularity.robot.subsystems.superstructure.turret.Turret;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.subsystems.vision.LimelightVision;
 
 import edu.wpi.first.wpilibj.LEDPattern;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

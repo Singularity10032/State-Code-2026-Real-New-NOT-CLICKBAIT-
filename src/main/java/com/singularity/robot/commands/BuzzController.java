@@ -1,14 +1,14 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.commands;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.commands;
 
-import com.stuypulse.stuylib.input.Gamepad;
-import com.stuypulse.stuylib.util.StopWatch;
+import com.singularity.lib.input.Gamepad;
+import com.singularity.lib.util.StopWatch;
 
-import com.stuypulse.robot.constants.DriverConstants;
+import com.singularity.robot.constants.DriverConstants;
 
 import edu.wpi.first.wpilibj2.command.Command;
 

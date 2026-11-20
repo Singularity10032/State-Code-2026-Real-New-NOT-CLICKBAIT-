@@ -1,27 +1,27 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.commands.swerve;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.commands.swerve;
 
-import com.stuypulse.stuylib.input.Gamepad;
-import com.stuypulse.stuylib.math.SLMath;
-import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.streams.numbers.IStream;
-import com.stuypulse.stuylib.streams.numbers.filters.LowPassFilter;
-import com.stuypulse.stuylib.streams.vectors.VStream;
-import com.stuypulse.stuylib.streams.vectors.filters.VDeadZone;
-import com.stuypulse.stuylib.streams.vectors.filters.VLowPassFilter;
-import com.stuypulse.stuylib.streams.vectors.filters.VRateLimit;
+import com.singularity.lib.input.Gamepad;
+import com.singularity.lib.math.SLMath;
+import com.singularity.lib.math.Vector2D;
+import com.singularity.lib.streams.numbers.IStream;
+import com.singularity.lib.streams.numbers.filters.LowPassFilter;
+import com.singularity.lib.streams.vectors.VStream;
+import com.singularity.lib.streams.vectors.filters.VDeadZone;
+import com.singularity.lib.streams.vectors.filters.VLowPassFilter;
+import com.singularity.lib.streams.vectors.filters.VRateLimit;
 
-import com.stuypulse.robot.constants.DriverConstants.Driver.Drive;
-import com.stuypulse.robot.constants.DriverConstants.Driver.Turn;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.constants.Settings.Swerve;
-import com.stuypulse.robot.subsystems.superstructure.Superstructure;
-import com.stuypulse.robot.subsystems.superstructure.Superstructure.SuperstructureState;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.constants.DriverConstants.Driver.Drive;
+import com.singularity.robot.constants.DriverConstants.Driver.Turn;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.constants.Settings.Swerve;
+import com.singularity.robot.subsystems.superstructure.Superstructure;
+import com.singularity.robot.subsystems.superstructure.Superstructure.SuperstructureState;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;

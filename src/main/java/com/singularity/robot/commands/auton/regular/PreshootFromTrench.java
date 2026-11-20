@@ -1,20 +1,20 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.commands.auton.regular;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.commands.auton.regular;
 
-import com.stuypulse.robot.commands.handoff.HandoffStop;
-import com.stuypulse.robot.commands.spindexer.SpindexerStop;
-import com.stuypulse.robot.commands.superstructure.SuperstructureSetStateAndRelease;
-import com.stuypulse.robot.commands.superstructure.SuperstructureStow;
-import com.stuypulse.robot.subsystems.handoff.Handoff;
-import com.stuypulse.robot.subsystems.handoff.Handoff.HandoffState;
-import com.stuypulse.robot.subsystems.spindexer.Spindexer;
-import com.stuypulse.robot.subsystems.spindexer.Spindexer.SpindexerState;
-import com.stuypulse.robot.subsystems.superstructure.Superstructure.SuperstructureState;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.commands.handoff.HandoffStop;
+import com.singularity.robot.commands.spindexer.SpindexerStop;
+import com.singularity.robot.commands.superstructure.SuperstructureSetStateAndRelease;
+import com.singularity.robot.commands.superstructure.SuperstructureStow;
+import com.singularity.robot.subsystems.handoff.Handoff;
+import com.singularity.robot.subsystems.handoff.Handoff.HandoffState;
+import com.singularity.robot.subsystems.spindexer.Spindexer;
+import com.singularity.robot.subsystems.spindexer.Spindexer.SpindexerState;
+import com.singularity.robot.subsystems.superstructure.Superstructure.SuperstructureState;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.RunCommand;

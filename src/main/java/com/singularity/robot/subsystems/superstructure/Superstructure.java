@@ -1,26 +1,26 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.subsystems.superstructure;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.subsystems.superstructure;
 
-import com.stuypulse.robot.Robot;
-import com.stuypulse.robot.Robot.RobotMode;
-import com.stuypulse.robot.subsystems.handoff.Handoff;
-import com.stuypulse.robot.subsystems.handoff.Handoff.HandoffState;
-import com.stuypulse.robot.subsystems.spindexer.Spindexer;
-import com.stuypulse.robot.subsystems.spindexer.Spindexer.SpindexerState;
-import com.stuypulse.robot.subsystems.superstructure.hood.Hood;
-import com.stuypulse.robot.subsystems.superstructure.hood.Hood.HoodState;
-import com.stuypulse.robot.subsystems.superstructure.shooter.Shooter;
-import com.stuypulse.robot.subsystems.superstructure.shooter.Shooter.ShooterState;
-import com.stuypulse.robot.subsystems.superstructure.turret.Turret;
-import com.stuypulse.robot.subsystems.superstructure.turret.Turret.TurretState;
-import com.stuypulse.robot.subsystems.swerve.CommandSwerveDrivetrain;
-import com.stuypulse.robot.util.superstructure.SOTMCalculator;
-import com.stuypulse.stuylib.streams.booleans.BStream;
-import com.stuypulse.stuylib.streams.booleans.filters.BDebounce;
+import com.singularity.robot.Robot;
+import com.singularity.robot.Robot.RobotMode;
+import com.singularity.robot.subsystems.handoff.Handoff;
+import com.singularity.robot.subsystems.handoff.Handoff.HandoffState;
+import com.singularity.robot.subsystems.spindexer.Spindexer;
+import com.singularity.robot.subsystems.spindexer.Spindexer.SpindexerState;
+import com.singularity.robot.subsystems.superstructure.hood.Hood;
+import com.singularity.robot.subsystems.superstructure.hood.Hood.HoodState;
+import com.singularity.robot.subsystems.superstructure.shooter.Shooter;
+import com.singularity.robot.subsystems.superstructure.shooter.Shooter.ShooterState;
+import com.singularity.robot.subsystems.superstructure.turret.Turret;
+import com.singularity.robot.subsystems.superstructure.turret.Turret.TurretState;
+import com.singularity.robot.subsystems.swerve.CommandSwerveDrivetrain;
+import com.singularity.robot.util.superstructure.SOTMCalculator;
+import com.singularity.lib.streams.booleans.BStream;
+import com.singularity.lib.streams.booleans.filters.BDebounce;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

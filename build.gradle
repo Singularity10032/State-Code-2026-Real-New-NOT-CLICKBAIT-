@@ -4,18 +4,7 @@ plugins {
     id "com.diffplug.spotless" version "6.22.0"
 }
 
-allprojects {
-    repositories {
-        mavenLocal()
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-// Set this to the latest version of StuyLib.
-// You can check here: https://github.com/StuyPulse/StuyLib/releases.
-final String STUYLIB_VERSION = '2026.1.1-SNAPSHOT'
-
-def ROBOT_MAIN_CLASS = "com.stuypulse.robot.Main"
+def ROBOT_MAIN_CLASS = "com.singularity.robot.Main"
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
@@ -78,8 +67,6 @@ dependencies {
     simulationRelease wpi.sim.enableRelease()
 
     testImplementation 'junit:junit:4.13.1'
-
-    implementation "com.stuypulse.stuylib:library:unspecified"
 }
 
 // Simulation configuration (e.g. environment variables).
@@ -90,25 +77,24 @@ spotless {
     enforceCheck = false
     java {
         targetExclude(
-            "src/main/java/com/stuypulse/robot/commands/autons/*.java",
-            "src/main/java/com/stuypulse/robot/commands/TurretHoodAlignToTarget.java"
+            "src/main/java/com/singularity/robot/commands/autons/*.java",
+            "src/main/java/com/singularity/robot/commands/TurretHoodAlignToTarget.java"
         )
-        licenseHeader("""/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
+        licenseHeader("""/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
 """).updateYearWithLatest(false)
 
         importOrder(
-            'com.stuypulse.stuylib', 
-            'com.stuypulse.constants', 
-            'com.stuypulse.subsystems', 
-            'com.stuypulse.commands', 
-            'com.stuypulse.commands.auton', 
-            'com.stuypulse.util', 
-            'com.stuypulse', 
-            'edu.wpi', 
+            'com.singularity.lib',
+            'com.singularity.robot.constants',
+            'com.singularity.robot.subsystems',
+            'com.singularity.robot.commands',
+            'com.singularity.robot.util',
+            'com.singularity',
+            'edu.wpi',
             'com.revrobotics'
         )
         removeUnusedImports()

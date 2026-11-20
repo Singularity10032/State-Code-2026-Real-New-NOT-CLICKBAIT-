@@ -1,18 +1,18 @@
-/************************ PROJECT TRIBECBOT *************************/
-/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
-/* Use of this source code is governed by an MIT-style license */
-/* that can be found in the repository LICENSE file.           */
-/***************************************************************/
-package com.stuypulse.robot.subsystems.superstructure.shooter;
+/*********************** SINGULARITY FRC 10032 ***********************/
+/* Copyright (c) 2026 Singularity (FRC 10032). All rights reserved. */
+/* Use of this source code is governed by an MIT-style license      */
+/* that can be found in the repository LICENSE file.                */
+/********************************************************************/
+package com.singularity.robot.subsystems.superstructure.shooter;
 
-import com.stuypulse.robot.Robot;
-import com.stuypulse.robot.Robot.RobotMode;
-import com.stuypulse.robot.RobotContainer.EnabledSubsystems;
-import com.stuypulse.robot.constants.Gains;
-import com.stuypulse.robot.constants.Motors;
-import com.stuypulse.robot.constants.Ports;
-import com.stuypulse.robot.constants.Settings;
-import com.stuypulse.robot.util.SysId;
+import com.singularity.robot.Robot;
+import com.singularity.robot.Robot.RobotMode;
+import com.singularity.robot.RobotContainer.EnabledSubsystems;
+import com.singularity.robot.constants.Gains;
+import com.singularity.robot.constants.Motors;
+import com.singularity.robot.constants.Ports;
+import com.singularity.robot.constants.Settings;
+import com.singularity.robot.util.SysId;
 
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.Current;

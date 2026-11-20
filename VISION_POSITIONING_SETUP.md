@@ -112,14 +112,14 @@
  * ===============
  * 
  * DriveToVisionPosition.java
- * → src/main/java/com/stuypulse/robot/commands/swerve/
+ * → src/main/java/com/singularity/robot/commands/swerve/
  * 
  * Settings.VisionShootingPositions
- * → src/main/java/com/stuypulse/robot/constants/Settings.java
+ * → src/main/java/com/singularity/robot/constants/Settings.java
  *   (bottom of file, before closing brace)
  * 
  * WhitelistVisionShootingTags.java
- * → src/main/java/com/stuypulse/robot/commands/vision/
+ * → src/main/java/com/singularity/robot/commands/vision/
  * 
  * RobotContainer.java changes
  * → Right button binding (around line 272)
