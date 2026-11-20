@@ -76,7 +76,7 @@ public class TunerConstants {
 
     // CAN bus that the devices are located on;
     // All swerve devices must share the same CAN bus
-    public static final CANBus kCANBus = new CANBus("", "./logs/example.hoot");
+    public static final CANBus kCANBus = new CANBus("CANIVORE", "./logs/example.hoot");
 
     // Theoretical free speed (m/s) at 12 V applied output;
     // This needs to be tuned to your individual robot
@@ -135,7 +135,7 @@ public class TunerConstants {
     public static final int kFrontLeftDriveMotorId = 14;
     public static final int kFrontLeftSteerMotorId = 15;
     public static final int kFrontLeftEncoderId = 3;
-    public static final Angle kFrontLeftEncoderOffset = Rotations.of(-0.197265625);
+    public static final Angle kFrontLeftEncoderOffset = Rotations.of(-0.190918);
     public static final boolean kFrontLeftSteerMotorInverted = true;
     public static final boolean kFrontLeftEncoderInverted = false;
 
@@ -146,7 +146,7 @@ public class TunerConstants {
     public static final int kFrontRightDriveMotorId = 13;
     public static final int kFrontRightSteerMotorId = 12;
     public static final int kFrontRightEncoderId = 2;
-    public static final Angle kFrontRightEncoderOffset = Rotations.of(-0.4521484375);
+    public static final Angle kFrontRightEncoderOffset = Rotations.of(-0.454346);
     public static final boolean kFrontRightSteerMotorInverted = true;
     public static final boolean kFrontRightEncoderInverted = false;
 
@@ -157,7 +157,7 @@ public class TunerConstants {
     public static final int kBackLeftDriveMotorId = 16;
     public static final int kBackLeftSteerMotorId = 17;
     public static final int kBackLeftEncoderId = 4;
-    public static final Angle kBackLeftEncoderOffset = Rotations.of(0.022705078125);
+    public static final Angle kBackLeftEncoderOffset = Rotations.of(0.010254);
     public static final boolean kBackLeftSteerMotorInverted = true;
     public static final boolean kBackLeftEncoderInverted = false;
 
@@ -168,7 +168,7 @@ public class TunerConstants {
     public static final int kBackRightDriveMotorId = 11;
     public static final int kBackRightSteerMotorId = 10;
     public static final int kBackRightEncoderId = 1;
-    public static final Angle kBackRightEncoderOffset = Rotations.of(-0.04296875);
+    public static final Angle kBackRightEncoderOffset = Rotations.of(-0.060059);
     public static final boolean kBackRightSteerMotorInverted = true;
     public static final boolean kBackRightEncoderInverted = false;
 
